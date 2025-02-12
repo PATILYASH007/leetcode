@@ -90960,8 +90960,8 @@
 <!-- solution:start -->
 
 <h3 id="_3">方法一：暴力枚举</h3>
-<p>我们先将所有边存入邻接矩阵 <span class="arithmatex">\(g\)</span> 中，再将每个节点的度数存入数组 <span class="arithmatex">\(deg\)</span> 中。初始化答案 <span class="arithmatex">\(ans=+\infty\)</span>。</p>
-<p>然后枚举所有的三元组 <span class="arithmatex">\((i, j, k)\)</span>，其中 <span class="arithmatex">\(i \lt j \lt k\)</span>，如果 <span class="arithmatex">\(g[i][j] = g[j][k] = g[i][k] = 1\)</span>，则说明这三个节点构成了一个连通三元组，此时更新答案为 <span class="arithmatex">\(ans = \min(ans, deg[i] + deg[j] + deg[k] - 6)\)</span>。</p>
+<p>我们先将所有边存入邻接矩阵 <span class="arithmatex">\(\textit{g}\)</span> 中，再将每个节点的度数存入数组 <span class="arithmatex">\(\textit{deg}\)</span> 中。初始化答案 <span class="arithmatex">\(\textit{ans}=+\infty\)</span>。</p>
+<p>然后枚举所有的三元组 <span class="arithmatex">\((i, j, k)\)</span>，其中 <span class="arithmatex">\(i \lt j \lt k\)</span>，如果 <span class="arithmatex">\(\textit{g}[i][j] = \textit{g}[j][k] = \textit{g}[i][k] = 1\)</span>，则说明这三个节点构成了一个连通三元组，此时更新答案为 <span class="arithmatex">\(\textit{ans} = \min(\textit{ans}, \textit{deg}[i] + \textit{deg}[j] + \textit{deg}[k] - 6)\)</span>。</p>
 <p>枚举完所有的三元组后，如果答案仍然为 <span class="arithmatex">\(+\infty\)</span>，说明图中不存在连通三元组，返回 <span class="arithmatex">\(-1\)</span>，否则返回答案。</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n^3)\)</span>，空间复杂度 <span class="arithmatex">\(O(n^2)\)</span>。其中 <span class="arithmatex">\(n\)</span> 为节点数。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label></div>
@@ -90983,7 +90983,15 @@
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">min</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="k">else</span> <span class="n">b</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">minTrioDegree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
         <span class="n">g</span> <span class="o">=</span> <span class="p">[[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
         <span class="n">deg</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
