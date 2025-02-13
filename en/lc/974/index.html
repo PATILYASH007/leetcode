@@ -86188,43 +86188,14 @@
 <!-- solution:start -->
 
 <h3 id="solution-1-hash-table-prefix-sum">Solution 1: Hash Table + Prefix Sum</h3>
-<ol>
-<li>
-<p><strong>Key Insight</strong>:</p>
-<ul>
-<li>If there exist indices <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span> such that <span class="arithmatex">\(i \leq j\)</span>, and the sum of the subarray <span class="arithmatex">\(nums[i, ..., j]\)</span> is divisible by <span class="arithmatex">\(k\)</span>, then <span class="arithmatex">\((s_j - s_i) \bmod k = 0\)</span>, this implies: <span class="arithmatex">\(s_j \bmod k = s_i \bmod k\)</span></li>
-<li>We can use a hash table to count the occurrences of prefix sums modulo <span class="arithmatex">\(k\)</span> to efficiently check for subarrays satisfying the condition.</li>
-</ul>
-</li>
-<li>
-<p><strong>Prefix Sum Modulo</strong>:</p>
-<ul>
-<li>Use a hash table <span class="arithmatex">\(cnt\)</span> to count occurrences of each prefix sum modulo <span class="arithmatex">\(k\)</span>.</li>
-<li><span class="arithmatex">\(cnt[i]\)</span> represents the number of prefix sums with modulo <span class="arithmatex">\(k\)</span> equal to <span class="arithmatex">\(i\)</span>.</li>
-<li>Initialize <span class="arithmatex">\(cnt[0] = 1\)</span> to account for subarrays directly divisible by <span class="arithmatex">\(k\)</span>.</li>
-</ul>
-</li>
-<li>
-<p><strong>Algorithm</strong>:</p>
-<ul>
-<li>Let a variable <span class="arithmatex">\(s\)</span> represent the running prefix sum, starting with <span class="arithmatex">\(s = 0\)</span>.</li>
-<li>Traverse the array <span class="arithmatex">\(nums\)</span> from left to right.<ul>
-<li>For each element <span class="arithmatex">\(x\)</span>:<ul>
-<li>Compute <span class="arithmatex">\(s = (s + x) \bmod k\)</span>.</li>
-<li>Update the result: <span class="arithmatex">\(ans += cnt[s]\)</span>.</li>
-<li>Increment <span class="arithmatex">\(cnt[s]\)</span> by <span class="arithmatex">\(1\)</span>.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Return the result <span class="arithmatex">\(ans\)</span>.</li>
-</ul>
-</li>
-</ol>
+<p>Suppose there exists <span class="arithmatex">\(i \leq j\)</span> such that the sum of <span class="arithmatex">\(\textit{nums}[i,..j]\)</span> is divisible by <span class="arithmatex">\(k\)</span>. If we let <span class="arithmatex">\(s_i\)</span> represent the sum of <span class="arithmatex">\(\textit{nums}[0,..i]\)</span> and <span class="arithmatex">\(s_j\)</span> represent the sum of <span class="arithmatex">\(\textit{nums}[0,..j]\)</span>, then <span class="arithmatex">\(s_j - s_i\)</span> is divisible by <span class="arithmatex">\(k\)</span>, i.e., <span class="arithmatex">\((s_j - s_i) \bmod k = 0\)</span>, which means <span class="arithmatex">\(s_j \bmod k = s_i \bmod k\)</span>. Therefore, we can use a hash table to count the number of prefix sums modulo <span class="arithmatex">\(k\)</span>, allowing us to quickly determine if there exists a subarray that meets the condition.</p>
+<p>We use a hash table <span class="arithmatex">\(\textit{cnt}\)</span> to count the number of prefix sums modulo <span class="arithmatex">\(k\)</span>, where <span class="arithmatex">\(\textit{cnt}[i]\)</span> represents the number of prefix sums with a modulo <span class="arithmatex">\(k\)</span> value of <span class="arithmatex">\(i\)</span>. Initially, <span class="arithmatex">\(\textit{cnt}[0] = 1\)</span>. We use a variable <span class="arithmatex">\(s\)</span> to represent the prefix sum, initially <span class="arithmatex">\(s = 0\)</span>.</p>
+<p>Next, we traverse the array <span class="arithmatex">\(\textit{nums}\)</span> from left to right. For each element <span class="arithmatex">\(x\)</span>, we calculate <span class="arithmatex">\(s = (s + x) \bmod k\)</span>, then update the answer <span class="arithmatex">\(\textit{ans} = \textit{ans} + \textit{cnt}[s]\)</span>, where <span class="arithmatex">\(\textit{cnt}[s]\)</span> represents the number of prefix sums with a modulo <span class="arithmatex">\(k\)</span> value of <span class="arithmatex">\(s\)</span>. Finally, we increment the value of <span class="arithmatex">\(\textit{cnt}[s]\)</span> by <span class="arithmatex">\(1\)</span> and continue to the next element.</p>
+<p>In the end, we return the answer <span class="arithmatex">\(\textit{ans}\)</span>.</p>
 <blockquote>
-<p>Note: if <span class="arithmatex">\(s\)</span> is negative, adjust it to be non-negative by adding <span class="arithmatex">\(k\)</span> and taking modulo <span class="arithmatex">\(k\)</span> again.</p>
+<p>Note: Since the value of <span class="arithmatex">\(s\)</span> can be negative, we can add <span class="arithmatex">\(k\)</span> to the result of <span class="arithmatex">\(s \bmod k\)</span> and then take modulo <span class="arithmatex">\(k\)</span> again to ensure that the value of <span class="arithmatex">\(s\)</span> is non-negative.</p>
 </blockquote>
-<p>The time complexity is <span class="arithmatex">\(O(n)\)</span> and space complexity is <span class="arithmatex">\(O(n)\)</span> where <span class="arithmatex">\(n\)</span> is the length of the array <span class="arithmatex">\(nums\)</span>.</p>
+<p>The time complexity is <span class="arithmatex">\(O(n)\)</span>, and the space complexity is <span class="arithmatex">\(O(n)\)</span>. Here, <span class="arithmatex">\(n\)</span> is the length of the array <span class="arithmatex">\(\textit{nums}\)</span>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -86334,18 +86305,14 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">subarraysDivByK</span><span class="p">(</span><span class="nx">nums</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[],</span><span class="w"> </span><span class="nx">k</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
-<span class="w">    </span><span class="nx">counter</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">num</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">num</span><span class="p">;</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="nx">s</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">k</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">ans</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">counter</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">counter</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">counter</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">subarraysDivByK</span><span class="p">(</span><span class="nx">nums</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">[],</span><span class="w"> </span><span class="nx">k</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cnt</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">0</span><span class="o">:</span><span class="w"> </span><span class="kt">1</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">nums</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(((</span><span class="nx">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">k</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">k</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">ans</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">cnt</span><span class="p">[</span><span class="nx">s</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">cnt</span><span class="p">[</span><span class="nx">s</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">cnt</span><span class="p">[</span><span class="nx">s</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ans</span><span class="p">;</span>
 <span class="p">}</span>
@@ -86384,14 +86351,14 @@
     
     <nav>
       
-        <a href="https://github.com/Maddieee" class="md-author" title="@Maddieee">
-          
-          <img src="https://avatars.githubusercontent.com/u/10874742?v=4&size=72" alt="Maddieee">
-        </a>
-      
         <a href="https://github.com/yanglbme" class="md-author" title="@yanglbme">
           
           <img src="https://avatars.githubusercontent.com/u/21008209?v=4&size=72" alt="yanglbme">
+        </a>
+      
+        <a href="https://github.com/Maddieee" class="md-author" title="@Maddieee">
+          
+          <img src="https://avatars.githubusercontent.com/u/10874742?v=4&size=72" alt="Maddieee">
         </a>
       
         <a href="https://github.com/thinkasany" class="md-author" title="@thinkasany">

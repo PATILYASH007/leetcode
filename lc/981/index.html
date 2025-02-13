@@ -90975,10 +90975,10 @@
 
 <strong>解释：</strong>
 TimeMap timeMap = new TimeMap();
-timeMap.set("foo", "bar", 1);  // 存储键 "foo" 和值 "bar" ，时间戳 timestamp = 1 &nbsp; 
+timeMap.set("foo", "bar", 1);  // 存储键 "foo" 和值 "bar" ，时间戳 timestamp = 1 &nbsp;
 timeMap.get("foo", 1);         // 返回 "bar"
 timeMap.get("foo", 3);         // 返回 "bar", 因为在时间戳 3 和时间戳 2 处没有对应 "foo" 的值，所以唯一的值位于时间戳 1 处（即 "bar"） 。
-timeMap.set("foo", "bar2", 4); // 存储键 "foo" 和值 "bar2" ，时间戳 timestamp = 4&nbsp; 
+timeMap.set("foo", "bar2", 4); // 存储键 "foo" 和值 "bar2" ，时间戳 timestamp = 4&nbsp;
 timeMap.get("foo", 4);         // 返回 "bar2"
 timeMap.get("foo", 5);         // 返回 "bar2"
 </pre>
@@ -91001,9 +91001,9 @@ timeMap.get("foo", 5);         // 返回 "bar2"
 <!-- solution:start -->
 
 <h3 id="_3">方法一：哈希表 + 有序集合（或二分查找）</h3>
-<p>我们可以用哈希表 <span class="arithmatex">\(ktv\)</span> 记录键值对，其中键为字符串 <span class="arithmatex">\(key\)</span>，值为一个列表，列表中的每个元素为一个二元组 <span class="arithmatex">\((timestamp, value)\)</span>，表示键 <span class="arithmatex">\(key\)</span> 在时间戳 <span class="arithmatex">\(timestamp\)</span> 时对应的值为 <span class="arithmatex">\(value\)</span>。</p>
-<p>当我们需要查询键 <span class="arithmatex">\(key\)</span> 在时间戳 <span class="arithmatex">\(timestamp\)</span> 时对应的值时，我们可以通过二分查找的方法在 <span class="arithmatex">\(ktv[key]\)</span> 中找到最大的时间戳 <span class="arithmatex">\(timestamp'\)</span>，使得 <span class="arithmatex">\(timestamp' \leq timestamp\)</span>，然后返回对应的值即可。</p>
-<p>时间复杂度方面，对于 <span class="arithmatex">\(set\)</span> 操作，由于哈希表的插入操作的时间复杂度为 <span class="arithmatex">\(O(1)\)</span>，因此时间复杂度为 <span class="arithmatex">\(O(1)\)</span>。对于 <span class="arithmatex">\(get\)</span> 操作，由于哈希表的查找操作的时间复杂度为 <span class="arithmatex">\(O(1)\)</span>，而二分查找的时间复杂度为 <span class="arithmatex">\(O(\log n)\)</span>，因此时间复杂度为 <span class="arithmatex">\(O(\log n)\)</span>。空间复杂度为 <span class="arithmatex">\(O(n)\)</span>，其中 <span class="arithmatex">\(n\)</span> 为 <span class="arithmatex">\(set\)</span> 操作的次数。</p>
+<p>我们可以用哈希表 <span class="arithmatex">\(\textit{kvt}\)</span> 记录键值对，其中键为字符串 <span class="arithmatex">\(\textit{key}\)</span>，值为一个有序集合，集合中的每个元素为一个二元组 <span class="arithmatex">\((\textit{timestamp}, \textit{value})\)</span>，表示键 <span class="arithmatex">\(\textit{key}\)</span> 在时间戳 <span class="arithmatex">\(\textit{timestamp}\)</span> 时对应的值为 <span class="arithmatex">\(\textit{value}\)</span>。</p>
+<p>当我们需要查询键 <span class="arithmatex">\(\textit{key}\)</span> 在时间戳 <span class="arithmatex">\(\textit{timestamp}\)</span> 时对应的值时，我们可以通过有序集合的方法找到最大的时间戳 <span class="arithmatex">\(\textit{timestamp}'\)</span>，使得 <span class="arithmatex">\(\textit{timestamp}' \leq \textit{timestamp}\)</span>，然后返回对应的值即可。</p>
+<p>时间复杂度方面，对于 <span class="arithmatex">\(\textit{set}\)</span> 操作，由于哈希表的插入操作的时间复杂度为 <span class="arithmatex">\(O(1)\)</span>，因此时间复杂度为 <span class="arithmatex">\(O(1)\)</span>。对于 <span class="arithmatex">\(\textit{get}\)</span> 操作，由于哈希表的查找操作的时间复杂度为 <span class="arithmatex">\(O(1)\)</span>，而有序集合的查找操作的时间复杂度为 <span class="arithmatex">\(O(\log n)\)</span>，因此时间复杂度为 <span class="arithmatex">\(O(\log n)\)</span>。空间复杂度为 <span class="arithmatex">\(O(n)\)</span>，其中 <span class="arithmatex">\(n\)</span> 为 <span class="arithmatex">\(\textit{set}\)</span> 操作的次数。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

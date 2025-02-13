@@ -29013,9 +29013,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1" class="md-nav__link">
+  <a href="#solution-1-hash-table-ordered-set-or-binary-search" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1
+      Solution 1: Hash Table + Ordered Set (or Binary Search)
     </span>
   </a>
   
@@ -86204,7 +86204,10 @@ timeMap.get(&quot;foo&quot;, 5);         // return &quot;bar2&quot;
 <h2 id="solutions">Solutions</h2>
 <!-- solution:start -->
 
-<h3 id="solution-1">Solution 1</h3>
+<h3 id="solution-1-hash-table-ordered-set-or-binary-search">Solution 1: Hash Table + Ordered Set (or Binary Search)</h3>
+<p>We can use a hash table <span class="arithmatex">\(\textit{kvt}\)</span> to record key-value pairs, where the key is the string <span class="arithmatex">\(\textit{key}\)</span> and the value is an ordered set. Each element in the set is a tuple <span class="arithmatex">\((\textit{timestamp}, \textit{value})\)</span>, representing the value <span class="arithmatex">\(\textit{value}\)</span> corresponding to the key <span class="arithmatex">\(\textit{key}\)</span> at the timestamp <span class="arithmatex">\(\textit{timestamp}\)</span>.</p>
+<p>When we need to query the value corresponding to the key <span class="arithmatex">\(\textit{key}\)</span> at the timestamp <span class="arithmatex">\(\textit{timestamp}\)</span>, we can use the ordered set to find the largest timestamp <span class="arithmatex">\(\textit{timestamp}'\)</span> such that <span class="arithmatex">\(\textit{timestamp}' \leq \textit{timestamp}\)</span>, and then return the corresponding value.</p>
+<p>In terms of time complexity, for the <span class="arithmatex">\(\textit{set}\)</span> operation, since the insertion operation of the hash table has a time complexity of <span class="arithmatex">\(O(1)\)</span>, the time complexity is <span class="arithmatex">\(O(1)\)</span>. For the <span class="arithmatex">\(\textit{get}\)</span> operation, since the lookup operation of the hash table has a time complexity of <span class="arithmatex">\(O(1)\)</span> and the lookup operation of the ordered set has a time complexity of <span class="arithmatex">\(O(\log n)\)</span>, the time complexity is <span class="arithmatex">\(O(\log n)\)</span>. The space complexity is <span class="arithmatex">\(O(n)\)</span>, where <span class="arithmatex">\(n\)</span> is the number of <span class="arithmatex">\(\textit{set}\)</span> operations.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
