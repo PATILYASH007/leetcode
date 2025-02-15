@@ -83731,9 +83731,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1-case-discussion-two-pointers" class="md-nav__link">
+  <a href="#solution-1-case-analysis-two-pointers" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1: Case Discussion + Two Pointers
+      Solution 1: Case Analysis + Two Pointers
     </span>
   </a>
   
@@ -86165,13 +86165,13 @@ second = &quot;pal&quot;
 <h2 id="solutions">Solutions</h2>
 <!-- solution:start -->
 
-<h3 id="solution-1-case-discussion-two-pointers">Solution 1: Case Discussion + Two Pointers</h3>
-<p>We denote the lengths of strings <span class="arithmatex">\(first\)</span> and <span class="arithmatex">\(second\)</span> as <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span>, respectively, where <span class="arithmatex">\(m \geq n\)</span>.</p>
-<p>Next, we discuss different cases:</p>
+<h3 id="solution-1-case-analysis-two-pointers">Solution 1: Case Analysis + Two Pointers</h3>
+<p>Let the lengths of the strings <span class="arithmatex">\(\textit{first}\)</span> and <span class="arithmatex">\(\textit{second}\)</span> be <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span>, respectively. Assume <span class="arithmatex">\(m \geq n\)</span>.</p>
+<p>Next, we discuss the following cases:</p>
 <ul>
-<li>When <span class="arithmatex">\(m - n &gt; 1\)</span>, <span class="arithmatex">\(first\)</span> and <span class="arithmatex">\(second\)</span> cannot be obtained through a single edit, so we return <code>false</code>.</li>
-<li>When <span class="arithmatex">\(m = n\)</span>, <span class="arithmatex">\(first\)</span> and <span class="arithmatex">\(second\)</span> can only be obtained through a single edit if and only if exactly one character is different.</li>
-<li>When <span class="arithmatex">\(m - n = 1\)</span>, <span class="arithmatex">\(first\)</span> and <span class="arithmatex">\(second\)</span> can only be obtained through a single edit if and only if <span class="arithmatex">\(second\)</span> is obtained by deleting one character from <span class="arithmatex">\(first\)</span>. We can use two pointers to implement this.</li>
+<li>When <span class="arithmatex">\(m - n \gt 1\)</span>, <span class="arithmatex">\(\textit{first}\)</span> and <span class="arithmatex">\(\textit{second}\)</span> cannot be made equal with one edit, so return <code>false</code>;</li>
+<li>When <span class="arithmatex">\(m = n\)</span>, <span class="arithmatex">\(\textit{first}\)</span> and <span class="arithmatex">\(\textit{second}\)</span> can be made equal with one edit only if there is exactly one different character;</li>
+<li>When <span class="arithmatex">\(m - n = 1\)</span>, <span class="arithmatex">\(\textit{first}\)</span> and <span class="arithmatex">\(\textit{second}\)</span> can be made equal with one edit only if <span class="arithmatex">\(\textit{second}\)</span> is obtained by deleting one character from <span class="arithmatex">\(\textit{first}\)</span>. We can use two pointers to achieve this.</li>
 </ul>
 <p>The time complexity is <span class="arithmatex">\(O(n)\)</span>, where <span class="arithmatex">\(n\)</span> is the length of the string. The space complexity is <span class="arithmatex">\(O(1)\)</span>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label><label for="__tabbed_1_6">Rust</label><label for="__tabbed_1_7">Swift</label></div>

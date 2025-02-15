@@ -90953,12 +90953,12 @@ second = &quot;pal&quot;
 <!-- solution:start -->
 
 <h3 id="_3">方法一：分情况讨论 + 双指针</h3>
-<p>我们将字符串 <span class="arithmatex">\(first\)</span> 和 <span class="arithmatex">\(second\)</span> 的长度记为 <span class="arithmatex">\(m\)</span> 和 <span class="arithmatex">\(n\)</span>，不妨设 <span class="arithmatex">\(m \geq n\)</span>。</p>
+<p>我们将字符串 <span class="arithmatex">\(\textit{first}\)</span> 和 <span class="arithmatex">\(\textit{second}\)</span> 的长度记为 <span class="arithmatex">\(m\)</span> 和 <span class="arithmatex">\(n\)</span>，不妨设 <span class="arithmatex">\(m \geq n\)</span>。</p>
 <p>接下来分情况讨论：</p>
 <ul>
-<li>当 <span class="arithmatex">\(m - n \gt 1\)</span> 时，<span class="arithmatex">\(first\)</span> 和 <span class="arithmatex">\(second\)</span> 无法通过一次编辑得到，返回 <code>false</code>；</li>
-<li>当 <span class="arithmatex">\(m = n\)</span> 时，<span class="arithmatex">\(first\)</span> 和 <span class="arithmatex">\(second\)</span> 只有在且仅在有且仅有一个字符不同的情况下才能通过一次编辑得到；</li>
-<li>当 <span class="arithmatex">\(m - n = 1\)</span> 时，<span class="arithmatex">\(first\)</span> 和 <span class="arithmatex">\(second\)</span> 只有在且仅在 <span class="arithmatex">\(second\)</span> 是 <span class="arithmatex">\(first\)</span> 删除一个字符后得到的情况下才能通过一次编辑得到，我们可以使用双指针来实现。</li>
+<li>当 <span class="arithmatex">\(m - n \gt 1\)</span> 时，<span class="arithmatex">\(\textit{first}\)</span> 和 <span class="arithmatex">\(\textit{second}\)</span> 无法通过一次编辑得到，返回 <code>false</code>；</li>
+<li>当 <span class="arithmatex">\(m = n\)</span> 时，<span class="arithmatex">\(\textit{first}\)</span> 和 <span class="arithmatex">\(\textit{second}\)</span> 只有在且仅在有且仅有一个字符不同的情况下才能通过一次编辑得到；</li>
+<li>当 <span class="arithmatex">\(m - n = 1\)</span> 时，<span class="arithmatex">\(\textit{first}\)</span> 和 <span class="arithmatex">\(\textit{second}\)</span> 只有在且仅在 <span class="arithmatex">\(\textit{second}\)</span> 是 <span class="arithmatex">\(\textit{first}\)</span> 删除一个字符后得到的情况下才能通过一次编辑得到，我们可以使用双指针来实现。</li>
 </ul>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，其中 <span class="arithmatex">\(n\)</span> 为字符串长度。空间复杂度 <span class="arithmatex">\(O(1)\)</span>。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label><label for="__tabbed_1_6">Rust</label><label for="__tabbed_1_7">Swift</label></div>
