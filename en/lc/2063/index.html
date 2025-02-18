@@ -52835,9 +52835,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1" class="md-nav__link">
+  <a href="#solution-1-enumerate-contribution" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1
+      Solution 1: Enumerate Contribution
     </span>
   </a>
   
@@ -86386,12 +86386,12 @@
 <pre>
 <strong>Input:</strong> word = &quot;aba&quot;
 <strong>Output:</strong> 6
-<strong>Explanation:</strong> 
+<strong>Explanation:</strong>
 All possible substrings are: &quot;a&quot;, &quot;ab&quot;, &quot;aba&quot;, &quot;b&quot;, &quot;ba&quot;, and &quot;a&quot;.
 - &quot;b&quot; has 0 vowels in it
 - &quot;a&quot;, &quot;ab&quot;, &quot;ba&quot;, and &quot;a&quot; have 1 vowel each
 - &quot;aba&quot; has 2 vowels in it
-Hence, the total sum of vowels = 0 + 1 + 1 + 1 + 1 + 2 = 6. 
+Hence, the total sum of vowels = 0 + 1 + 1 + 1 + 1 + 2 = 6.
 </pre>
 
 <p><strong class="example">Example 2:</strong></p>
@@ -86399,7 +86399,7 @@ Hence, the total sum of vowels = 0 + 1 + 1 + 1 + 1 + 2 = 6.
 <pre>
 <strong>Input:</strong> word = &quot;abc&quot;
 <strong>Output:</strong> 3
-<strong>Explanation:</strong> 
+<strong>Explanation:</strong>
 All possible substrings are: &quot;a&quot;, &quot;ab&quot;, &quot;abc&quot;, &quot;b&quot;, &quot;bc&quot;, and &quot;c&quot;.
 - &quot;a&quot;, &quot;ab&quot;, and &quot;abc&quot; have 1 vowel each
 - &quot;b&quot;, &quot;bc&quot;, and &quot;c&quot; have 0 vowels each
@@ -86427,8 +86427,10 @@ Hence, the total sum of vowels = 1 + 1 + 1 + 0 + 0 + 0 = 3.
 <h2 id="solutions">Solutions</h2>
 <!-- solution:start -->
 
-<h3 id="solution-1">Solution 1</h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label></div>
+<h3 id="solution-1-enumerate-contribution">Solution 1: Enumerate Contribution</h3>
+<p>We can enumerate each character <span class="arithmatex">\(\textit{word}[i]\)</span> in the string. If <span class="arithmatex">\(\textit{word}[i]\)</span> is a vowel, then <span class="arithmatex">\(\textit{word}[i]\)</span> appears in <span class="arithmatex">\((i + 1) \times (n - i)\)</span> substrings. We sum up the counts of these substrings.</p>
+<p>The time complexity is <span class="arithmatex">\(O(n)\)</span>, where <span class="arithmatex">\(n\)</span> is the length of the string <span class="arithmatex">\(\textit{word}\)</span>. The space complexity is <span class="arithmatex">\(O(1)\)</span>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label><label for="__tabbed_1_6">Rust</label><label for="__tabbed_1_7">JavaScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -86532,6 +86534,58 @@ Hence, the total sum of vowels = 1 + 1 + 1 + 0 + 0 + 0 = 3.
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ans</span><span class="p">;</span>
 <span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">impl</span><span class="w"> </span><span class="n">Solution</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span><span class="w"> </span><span class="nf">count_vowels</span><span class="p">(</span><span class="n">word</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">word</span><span class="p">.</span><span class="n">len</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">i64</span><span class="p">;</span>
+<span class="w">        </span><span class="n">word</span><span class="p">.</span><span class="n">chars</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">enumerate</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="s">&quot;aeiou&quot;</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="o">*</span><span class="n">c</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="o">|</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="p">)</span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">i64</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="kt">i64</span><span class="p">))</span>
+<span class="w">            </span><span class="p">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * @param {string} word</span>
+<span class="cm"> * @return {number}</span>
+<span class="cm"> */</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">countVowels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">word</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">word</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;e&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;i&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;u&#39;</span><span class="p">].</span><span class="nx">includes</span><span class="p">(</span><span class="nx">word</span><span class="p">[</span><span class="nx">i</span><span class="p">]))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">ans</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">i</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">ans</span><span class="p">;</span>
+<span class="p">};</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
