@@ -91204,7 +91204,7 @@ s1 = "abcdebdde", s2 = "bde"
 <!-- solution:start -->
 
 <h3 id="_3">方法一：动态规划</h3>
-<p>我们定义 <span class="arithmatex">\(f[i][j]\)</span> 表示字符串 <span class="arithmatex">\(s1\)</span> 的前 <span class="arithmatex">\(i\)</span> 个字符包含字符串 <span class="arithmatex">\(s2\)</span> 的前 <span class="arithmatex">\(j\)</span> 个字符时的最短子串的起始位置，如果不存在则为 <span class="arithmatex">\(0\)</span>。</p>
+<p>我们定义 <span class="arithmatex">\(f[i][j]\)</span> 表示字符串 <span class="arithmatex">\(\textit{s1}\)</span> 的前 <span class="arithmatex">\(i\)</span> 个字符包含字符串 <span class="arithmatex">\(\textit{s2}\)</span> 的前 <span class="arithmatex">\(j\)</span> 个字符时的最短子串的起始位置，如果不存在则为 <span class="arithmatex">\(0\)</span>。</p>
 <p>我们可以得到状态转移方程：</p>
 <div class="arithmatex">\[
 f[i][j] = \begin{cases}
@@ -91213,8 +91213,8 @@ f[i - 1][j - 1], &amp; j &gt; 1 \textit{ and } s1[i-1] = s2[j-1] \\
 f[i - 1][j], &amp; s1[i-1] \ne s2[j-1]
 \end{cases}
 \]</div>
-<p>接下来我们只需要遍历 <span class="arithmatex">\(s1\)</span>，如果 <span class="arithmatex">\(f[i][n] \gt 0\)</span>，则更新最短子串的起始位置和长度。最后返回最短子串即可。</p>
-<p>时间复杂度 <span class="arithmatex">\(O(m \times n)\)</span>，空间复杂度 <span class="arithmatex">\(O(m \times n)\)</span>。其中 <span class="arithmatex">\(m\)</span> 和 <span class="arithmatex">\(n\)</span> 分别为字符串 <span class="arithmatex">\(s1\)</span> 和 <span class="arithmatex">\(s2\)</span> 的长度。</p>
+<p>接下来我们只需要遍历 <span class="arithmatex">\(\textit{s1}\)</span>，如果 <span class="arithmatex">\(f[i][n] \gt 0\)</span>，则更新最短子串的起始位置和长度。最后返回最短子串即可。</p>
+<p>时间复杂度 <span class="arithmatex">\(O(m \times n)\)</span>，空间复杂度 <span class="arithmatex">\(O(m \times n)\)</span>。其中 <span class="arithmatex">\(m\)</span> 和 <span class="arithmatex">\(n\)</span> 分别为字符串 <span class="arithmatex">\(\textit{s1}\)</span> 和 <span class="arithmatex">\(\textit{s2}\)</span> 的长度。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

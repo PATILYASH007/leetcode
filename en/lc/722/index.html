@@ -23333,9 +23333,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1" class="md-nav__link">
+  <a href="#solution-1-case-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1
+      Solution 1: Case Analysis
     </span>
   </a>
   
@@ -86403,19 +86403,19 @@
 <strong>Explanation:</strong> The line by line code is visualized as below:
 /*Test program */
 int main()
-{ 
-  // variable declaration 
+{
+  // variable declaration
 int a, b, c;
 /* This is a test
-   multiline  
-   comment for 
+   multiline
+   comment for
    testing */
 a = b + c;
 }
 The string /* denotes a block comment, including line 1 and lines 6-9. The string // denotes line 4 as comments.
 The line by line output code is visualized as below:
 int main()
-{ 
+{
 
 int a, b, c;
 a = b + c;
@@ -86446,7 +86446,13 @@ a = b + c;
 <h2 id="solutions">Solutions</h2>
 <!-- solution:start -->
 
-<h3 id="solution-1">Solution 1</h3>
+<h3 id="solution-1-case-analysis">Solution 1: Case Analysis</h3>
+<p>We use a variable <span class="arithmatex">\(\textit{blockComment}\)</span> to indicate whether we are currently in a block comment. Initially, <span class="arithmatex">\(\textit{blockComment}\)</span> is <code>false</code>. We use a variable <span class="arithmatex">\(t\)</span> to store the valid characters of the current line.</p>
+<p>Next, we traverse each line and discuss the following cases:</p>
+<p>If we are currently in a block comment, and the current character and the next character are <code>'*/'</code>, it means the block comment ends. We set <span class="arithmatex">\(\textit{blockComment}\)</span> to <code>false</code> and skip these two characters. Otherwise, we continue in the block comment state without doing anything.</p>
+<p>If we are not currently in a block comment, and the current character and the next character are <code>'/*'</code>, it means a block comment starts. We set <span class="arithmatex">\(\textit{blockComment}\)</span> to <code>true</code> and skip these two characters. If the current character and the next character are <code>'//'</code>, it means a line comment starts, and we exit the current line traversal. Otherwise, the current character is a valid character, and we add it to <span class="arithmatex">\(t\)</span>.</p>
+<p>After traversing the current line, if <span class="arithmatex">\(\textit{blockComment}\)</span> is <code>false</code> and <span class="arithmatex">\(t\)</span> is not empty, it means the current line is valid. We add it to the answer array and clear <span class="arithmatex">\(t\)</span>. Continue to traverse the next line.</p>
+<p>The time complexity is <span class="arithmatex">\(O(L)\)</span>, and the space complexity is <span class="arithmatex">\(O(L)\)</span>, where <span class="arithmatex">\(L\)</span> is the total length of the source code.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label><label for="__tabbed_1_6">Rust</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

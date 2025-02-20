@@ -91200,19 +91200,19 @@
 <strong>解释:</strong> 示例代码可以编排成这样:
 /*Test program */
 int main()
-{ 
-  // variable declaration 
+{
+  // variable declaration
 int a, b, c;
 /* This is a test
-   multiline  
-   comment for 
+   multiline
+   comment for
    testing */
 a = b + c;
 }
 第 1 行和第 6-9 行的字符串 /* 表示块注释。第 4 行的字符串 // 表示行注释。
-编排后: 
+编排后:
 int main()
-{ 
+{
 
 int a, b, c;
 a = b + c;
@@ -91244,11 +91244,11 @@ a = b + c;
 <!-- solution:start -->
 
 <h3 id="_3">方法一：分情况讨论</h3>
-<p>我们用一个变量 <span class="arithmatex">\(blockComment\)</span> 来表示当前是否处于块注释中，初始时 <span class="arithmatex">\(blockComment\)</span> 为 <code>false</code>；用一个变量 <span class="arithmatex">\(t\)</span> 来存储当前行的有效字符。</p>
+<p>我们用一个变量 来表示当前是否处于块注释中，初始时 <span class="arithmatex">\(\textit{blockComment}\)</span> 为 <code>false</code>；用一个变量 <span class="arithmatex">\(t\)</span> 来存储当前行的有效字符。</p>
 <p>接下来，遍历每一行，分情况讨论：</p>
-<p>如果当前处于块注释中，那么如果当前字符和下一个字符是 <code>'*/'</code>，说明块注释结束，我们将 <span class="arithmatex">\(blockComment\)</span> 置为 <code>false</code>，并且跳过这两个字符；否则，我们继续保持块注释状态，不做任何操作；</p>
-<p>如果当前不处于块注释中，那么如果当前字符和下一个字符是 <code>'/*'</code>，说明块注释开始，我们将 <span class="arithmatex">\(blockComment\)</span> 置为 <code>true</code>，并且跳过这两个字符；如果当前字符和下一个字符是 <code>'//'</code>，那么说明行注释开始，我们直接退出当前行的遍历；否则，说明当前字符是有效字符，我们将其加入 <span class="arithmatex">\(t\)</span> 中；</p>
-<p>遍历完当前行后，如果 <span class="arithmatex">\(blockComment\)</span> 为 <code>false</code>，并且 <span class="arithmatex">\(t\)</span> 不为空，说明当前行是有效行，我们将其加入答案数组中，并且清空 <span class="arithmatex">\(t\)</span>。继续遍历下一行。</p>
+<p>如果当前处于块注释中，那么如果当前字符和下一个字符是 <code>'*/'</code>，说明块注释结束，我们将 <span class="arithmatex">\(\textit{blockComment}\)</span> 置为 <code>false</code>，并且跳过这两个字符；否则，我们继续保持块注释状态，不做任何操作；</p>
+<p>如果当前不处于块注释中，那么如果当前字符和下一个字符是 <code>'/*'</code>，说明块注释开始，我们将 <span class="arithmatex">\(\textit{blockComment}\)</span> 置为 <code>true</code>，并且跳过这两个字符；如果当前字符和下一个字符是 <code>'//'</code>，那么说明行注释开始，我们直接退出当前行的遍历；否则，说明当前字符是有效字符，我们将其加入 <span class="arithmatex">\(t\)</span> 中；</p>
+<p>遍历完当前行后，如果 <span class="arithmatex">\(\textit{blockComment}\)</span> 为 <code>false</code>，并且 <span class="arithmatex">\(t\)</span> 不为空，说明当前行是有效行，我们将其加入答案数组中，并且清空 <span class="arithmatex">\(t\)</span>。继续遍历下一行。</p>
 <p>时间复杂度 <span class="arithmatex">\(O(L)\)</span>，空间复杂度 <span class="arithmatex">\(O(L)\)</span>，其中 <span class="arithmatex">\(L\)</span> 是源代码的总长度。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label><label for="__tabbed_1_6">Rust</label></div>
 <div class="tabbed-content">

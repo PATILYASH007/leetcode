@@ -23443,9 +23443,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1" class="md-nav__link">
+  <a href="#solution-1-dynamic-programming" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1
+      Solution 1: Dynamic Programming
     </span>
   </a>
   
@@ -86378,7 +86378,7 @@
 <pre>
 <strong>Input:</strong> s1 = &quot;abcdebdde&quot;, s2 = &quot;bde&quot;
 <strong>Output:</strong> &quot;bcde&quot;
-<strong>Explanation:</strong> 
+<strong>Explanation:</strong>
 &quot;bcde&quot; is the answer because it occurs before &quot;bdde&quot; which has the same length.
 &quot;deb&quot; is not a smaller window because the elements of s2 in the window must occur in order.
 </pre>
@@ -86404,7 +86404,18 @@
 <h2 id="solutions">Solutions</h2>
 <!-- solution:start -->
 
-<h3 id="solution-1">Solution 1</h3>
+<h3 id="solution-1-dynamic-programming">Solution 1: Dynamic Programming</h3>
+<p>We define <span class="arithmatex">\(f[i][j]\)</span> to represent the starting position of the shortest substring of the first <span class="arithmatex">\(i\)</span> characters of string <span class="arithmatex">\(\textit{s1}\)</span> that contains the first <span class="arithmatex">\(j\)</span> characters of string <span class="arithmatex">\(\textit{s2}\)</span>. If it does not exist, it is <span class="arithmatex">\(0\)</span>.</p>
+<p>We can derive the state transition equation:</p>
+<div class="arithmatex">\[
+f[i][j] = \begin{cases}
+i, &amp; j = 1 \textit{ and } s1[i-1] = s2[j] \\
+f[i - 1][j - 1], &amp; j &gt; 1 \textit{ and } s1[i-1] = s2[j-1] \\
+f[i - 1][j], &amp; s1[i-1] \ne s2[j-1]
+\end{cases}
+\]</div>
+<p>Next, we only need to traverse <span class="arithmatex">\(\textit{s1}\)</span>. If <span class="arithmatex">\(f[i][n] \gt 0\)</span>, update the starting position and length of the shortest substring. Finally, return the shortest substring.</p>
+<p>The time complexity is <span class="arithmatex">\(O(m \times n)\)</span>, and the space complexity is <span class="arithmatex">\(O(m \times n)\)</span>. Here, <span class="arithmatex">\(m\)</span> and <span class="arithmatex">\(n\)</span> are the lengths of strings <span class="arithmatex">\(\textit{s1}\)</span> and <span class="arithmatex">\(\textit{s2}\)</span>, respectively.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
