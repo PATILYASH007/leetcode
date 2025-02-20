@@ -86421,9 +86421,9 @@
 <!-- solution:start -->
 
 <h3 id="solution-1-simulation">Solution 1: Simulation</h3>
-<p>We first use the array <span class="arithmatex">\(pos\)</span> to record the coordinates of the grid visited by the knight, and then traverse the <span class="arithmatex">\(pos\)</span> array to check whether the difference between the adjacent two grid coordinates is <span class="arithmatex">\((1, 2)\)</span> or <span class="arithmatex">\((2, 1)\)</span>. If not, return <code>false</code>.</p>
-<p>Otherwise, return <code>true</code> after the traversal ends.</p>
-<p>The time complexity is <span class="arithmatex">\(O(n^2)\)</span> and the space complexity is <span class="arithmatex">\(O(n^2)\)</span>, where <span class="arithmatex">\(n\)</span> is the length of the chessboard.</p>
+<p>We first use an array <span class="arithmatex">\(\textit{pos}\)</span> to record the coordinates of each cell visited by the knight, then traverse the <span class="arithmatex">\(\textit{pos}\)</span> array and check if the coordinate difference between two adjacent cells is <span class="arithmatex">\((1, 2)\)</span> or <span class="arithmatex">\((2, 1)\)</span>. If not, return <span class="arithmatex">\(\textit{false}\)</span>.</p>
+<p>Otherwise, after the traversal, return <span class="arithmatex">\(\textit{true}\)</span>.</p>
+<p>The time complexity is <span class="arithmatex">\(O(n^2)\)</span>, and the space complexity is <span class="arithmatex">\(O(n^2)\)</span>. Here, <span class="arithmatex">\(n\)</span> is the side length of the chessboard.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

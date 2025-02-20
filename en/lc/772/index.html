@@ -86422,7 +86422,57 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">q</span><span class="p">):</span>
+            <span class="n">num</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">stk</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="p">[]</span>
+            <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                    <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;(&quot;</span><span class="p">:</span>
+                    <span class="n">num</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="s2">&quot;+-*/)&quot;</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">q</span><span class="p">:</span>
+                    <span class="k">match</span> <span class="n">sign</span><span class="p">:</span>
+                        <span class="k">case</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+                            <span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+                        <span class="k">case</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+                            <span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="n">num</span><span class="p">)</span>
+                        <span class="k">case</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+                            <span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stk</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="o">*</span> <span class="n">num</span><span class="p">)</span>
+                        <span class="k">case</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+                            <span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">stk</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span> <span class="o">/</span> <span class="n">num</span><span class="p">))</span>
+                    <span class="n">num</span><span class="p">,</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">stk</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">dfs</span><span class="p">(</span><span class="n">deque</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -86713,6 +86763,11 @@
 
     
     <nav>
+      
+        <a href="https://github.com/fxrcode" class="md-author" title="@fxrcode">
+          
+          <img src="https://avatars.githubusercontent.com/u/13307594?v=4&size=72" alt="fxrcode">
+        </a>
       
         <a href="https://github.com/Leehouc" class="md-author" title="@Leehouc">
           

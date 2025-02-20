@@ -91220,8 +91220,8 @@
 <!-- solution:start -->
 
 <h3 id="_3">方法一：模拟</h3>
-<p>我们先用数组 <span class="arithmatex">\(pos\)</span> 记录骑士访问的每个格子的坐标，然后遍历 <span class="arithmatex">\(pos\)</span> 数组，检查相邻两个格子的坐标差是否为 <span class="arithmatex">\((1, 2)\)</span> 或 <span class="arithmatex">\((2, 1)\)</span> 即可。若不满足，则返回 <code>false</code>。</p>
-<p>否则遍历结束后，返回 <code>true</code>。</p>
+<p>我们先用数组 <span class="arithmatex">\(\textit{pos}\)</span> 记录骑士访问的每个格子的坐标，然后遍历 <span class="arithmatex">\(\textit{pos}\)</span> 数组，检查相邻两个格子的坐标差是否为 <span class="arithmatex">\((1, 2)\)</span> 或 <span class="arithmatex">\((2, 1)\)</span> 即可。若不满足，则返回 <span class="arithmatex">\(\textit{false}\)</span>。</p>
+<p>否则遍历结束后，返回 <span class="arithmatex">\(\textit{true}\)</span></p>
 <p>时间复杂度 <span class="arithmatex">\(O(n^2)\)</span>，空间复杂度 <span class="arithmatex">\(O(n^2)\)</span>。其中 <span class="arithmatex">\(n\)</span> 为棋盘的边长。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label></div>
 <div class="tabbed-content">

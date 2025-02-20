@@ -59765,9 +59765,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1" class="md-nav__link">
+  <a href="#solution-1-tree-dp" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1
+      Solution 1: Tree DP
     </span>
   </a>
   
@@ -86426,7 +86426,15 @@ Note that we cannot choose more than one edge because all edges are adjacent to 
 <h2 id="solutions">Solutions</h2>
 <!-- solution:start -->
 
-<h3 id="solution-1">Solution 1</h3>
+<h3 id="solution-1-tree-dp">Solution 1: Tree DP</h3>
+<p>We design a function <span class="arithmatex">\(dfs(i)\)</span>, which represents the maximum sum of the weights of selected edges in the subtree rooted at node <span class="arithmatex">\(i\)</span>, such that no two selected edges are adjacent. This function returns two values <span class="arithmatex">\((a, b)\)</span>. The first value <span class="arithmatex">\(a\)</span> represents the sum of the weights of selected edges when the edge between the current node <span class="arithmatex">\(i\)</span> and its parent node is selected. The second value <span class="arithmatex">\(b\)</span> represents the sum of the weights of selected edges when the edge between the current node <span class="arithmatex">\(i\)</span> and its parent node is not selected.</p>
+<p>We can observe the following for the current node <span class="arithmatex">\(i\)</span>:</p>
+<ul>
+<li>If the edge between <span class="arithmatex">\(i\)</span> and its parent node is selected, then none of the edges between <span class="arithmatex">\(i\)</span> and its child nodes can be selected. In this case, the value of <span class="arithmatex">\(a\)</span> for the current node is the sum of the <span class="arithmatex">\(b\)</span> values of all its child nodes.</li>
+<li>If the edge between <span class="arithmatex">\(i\)</span> and its parent node is not selected, then we can select at most one edge between <span class="arithmatex">\(i\)</span> and its child nodes. In this case, the value of <span class="arithmatex">\(b\)</span> for the current node is the sum of the <span class="arithmatex">\(a\)</span> values of the selected child nodes and the <span class="arithmatex">\(b\)</span> values of the unselected child nodes, plus the weight of the edge between <span class="arithmatex">\(i\)</span> and the selected child node.</li>
+</ul>
+<p>We call the function <span class="arithmatex">\(dfs(0)\)</span>, and the second value returned is the answer, which is the sum of the weights of selected edges when the edge between the root node and its parent node is not selected.</p>
+<p>The time complexity is <span class="arithmatex">\(O(n)\)</span>, and the space complexity is <span class="arithmatex">\(O(n)\)</span>. Here, <span class="arithmatex">\(n\)</span> is the number of nodes.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

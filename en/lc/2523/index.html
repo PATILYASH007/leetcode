@@ -62955,9 +62955,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1" class="md-nav__link">
+  <a href="#solution-1-linear-sieve" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1
+      Solution 1: Linear Sieve
     </span>
   </a>
   
@@ -86412,7 +86412,9 @@ Since 11 is smaller than 17, we return the first pair.
 <h2 id="solutions">Solutions</h2>
 <!-- solution:start -->
 
-<h3 id="solution-1">Solution 1</h3>
+<h3 id="solution-1-linear-sieve">Solution 1: Linear Sieve</h3>
+<p>For the given range <span class="arithmatex">\([\textit{left}, \textit{right}]\)</span>, we can use the linear sieve method to find all prime numbers. Then, we traverse the prime numbers in ascending order to find the pair of adjacent prime numbers with the smallest difference, which will be the answer.</p>
+<p>The time complexity is <span class="arithmatex">\(O(n)\)</span>, and the space complexity is <span class="arithmatex">\(O(n)\)</span>. Here, <span class="arithmatex">\(n = \textit{right}\)</span>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

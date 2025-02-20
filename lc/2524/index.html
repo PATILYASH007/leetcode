@@ -91219,9 +91219,9 @@
 <!-- solution:start -->
 
 <h3 id="_3">方法一：哈希表 + 滑动窗口 + 快速幂</h3>
-<p>我们用哈希表 <code>cnt</code> 维护窗口大小为 <span class="arithmatex">\(k\)</span> 的元素及其出现的次数。</p>
+<p>我们用哈希表 <span class="arithmatex">\(\textit{cnt}\)</span> 维护窗口大小为 <span class="arithmatex">\(k\)</span> 的元素及其出现的次数。</p>
 <p>先算出初始窗口为 <span class="arithmatex">\(k\)</span> 的所有元素的分数。然后利用滑动窗口，每次加入一个元素，并移除最左边的元素，同时利用快速幂更新分数。</p>
-<p>时间复杂度 <span class="arithmatex">\(O(n \times \log n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>。其中 <span class="arithmatex">\(n\)</span> 是数组 <code>nums</code> 的长度。</p>
+<p>时间复杂度 <span class="arithmatex">\(O(n \times \log n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>。其中 <span class="arithmatex">\(n\)</span> 是数组 <span class="arithmatex">\(\textit{nums}\)</span> 的长度。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

@@ -58709,9 +58709,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1" class="md-nav__link">
+  <a href="#solution-1-two-pointers" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1
+      Solution 1: Two Pointers
     </span>
   </a>
   
@@ -86409,7 +86409,9 @@ Two operations could be performed to make s a palindrome so return true.
 <h2 id="solutions">Solutions</h2>
 <!-- solution:start -->
 
-<h3 id="solution-1">Solution 1</h3>
+<h3 id="solution-1-two-pointers">Solution 1: Two Pointers</h3>
+<p>We can use two pointers <span class="arithmatex">\(i\)</span> and <span class="arithmatex">\(j\)</span>, pointing to the beginning and end of the string, respectively, and then move towards the center, counting the number of different characters. If the number of different characters is greater than <span class="arithmatex">\(2\)</span>, return <span class="arithmatex">\(\textit{false}\)</span>; otherwise, return <span class="arithmatex">\(\textit{true}\)</span>.</p>
+<p>The time complexity is <span class="arithmatex">\(O(n)\)</span>, and the space complexity is <span class="arithmatex">\(O(1)\)</span>. Here, <span class="arithmatex">\(n\)</span> is the length of the string <span class="arithmatex">\(s\)</span>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label><label for="__tabbed_1_5">TypeScript</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
