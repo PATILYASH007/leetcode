@@ -91253,7 +91253,93 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python3</label><label for="__tabbed_1_2">Java</label><label for="__tabbed_1_3">C++</label><label for="__tabbed_1_4">Go</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">maxFreeTime</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">eventTime</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">startTime</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">endTime</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">startTime</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">left_gaps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">left_gaps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">startTime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">meet</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">left_gaps</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                <span class="n">left_gaps</span><span class="p">[</span><span class="n">meet</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">startTime</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span> <span class="o">-</span> <span class="n">endTime</span><span class="p">[</span><span class="n">meet</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="n">right_gaps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">right_gaps</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">eventTime</span> <span class="o">-</span> <span class="n">endTime</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">meet</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">right_gaps</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                <span class="n">right_gaps</span><span class="p">[</span><span class="n">meet</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">startTime</span><span class="p">[</span><span class="n">meet</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">endTime</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">meet</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="n">left_gap</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">left_gaps</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span> <span class="k">if</span> <span class="n">meet</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">startTime</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span> <span class="o">-</span> <span class="n">endTime</span><span class="p">[</span><span class="n">meet</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">right_gap</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">right_gaps</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">meet</span> <span class="o">==</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="k">else</span> <span class="n">startTime</span><span class="p">[</span><span class="n">meet</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">endTime</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span>
+            <span class="p">)</span>
+
+            <span class="n">interval</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="n">meet</span> <span class="o">!=</span> <span class="mi">0</span>
+                <span class="ow">and</span> <span class="n">left_gaps</span><span class="p">[</span><span class="n">meet</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">endTime</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span> <span class="o">-</span> <span class="n">startTime</span><span class="p">[</span><span class="n">meet</span><span class="p">])</span>
+                <span class="ow">or</span> <span class="n">meet</span> <span class="o">!=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+                <span class="ow">and</span> <span class="n">right_gaps</span><span class="p">[</span><span class="n">meet</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">endTime</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span> <span class="o">-</span> <span class="n">startTime</span><span class="p">[</span><span class="n">meet</span><span class="p">])</span>
+            <span class="p">):</span>
+                <span class="n">interval</span> <span class="o">=</span> <span class="n">endTime</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span> <span class="o">-</span> <span class="n">startTime</span><span class="p">[</span><span class="n">meet</span><span class="p">]</span>
+
+            <span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">left_gap</span> <span class="o">+</span> <span class="n">interval</span> <span class="o">+</span> <span class="n">right_gap</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">res</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -91300,6 +91386,11 @@
 
     
     <nav>
+      
+        <a href="https://github.com/AlfredChow2338" class="md-author" title="@AlfredChow2338">
+          
+          <img src="https://avatars.githubusercontent.com/u/55742290?v=4&size=72" alt="AlfredChow2338">
+        </a>
       
         <a href="https://github.com/yanglbme" class="md-author" title="@yanglbme">
           
